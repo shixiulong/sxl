@@ -1,0 +1,20 @@
+系统日志使用说明
+    -例：@LogRecord(module = HandleModule.BBGL,object = "object",identif = "id",desc = "desc",type = HandleType.DELETE)
+        使用日志记录在方法打上注解
+    -module:模板
+    -object:对象（操作对象：表名 ）
+    -identif：操作对象唯一标识符，对应的是方法参数名（该参数为上一级传过来的操作对象唯一标识符）默认空，一旦指定方法参数必须包含
+    -desc：操作描述（默认空）可以指定方法参数
+    -type：操作类型（INSERT,UPDATE,DELETE,LOG_IN,EXIT）,HandleType枚举指定值
+
+    -一次记录多个日志时
+        identif和desc都为数组或集合
+            两个集合或数组的size不一样时，以最大数量为准插入个数，另外一个插入值为（多的数量-少的数量=空值的数量）
+        identif和desc一方为数组或集合时
+            以数组或集合的size为准插入个数，另外一个插入的值全部为指定的值
+        都不是数组或集合时
+            均为指定的值
+
+
+
+
