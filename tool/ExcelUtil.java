@@ -107,7 +107,11 @@ public class ExcelUtil {
                 HSSFCell cell = row.createCell(j);
                 //反射获取get方法
                 method = c.getMethod("get" + title.get(j).substring(0, 1).toUpperCase() + title.get(j).substring(1, title.get(j).length()));
-                cell.setCellValue(method.invoke(list.get(i - 1)).toString());
+                String content = "";
+                if (method.invoke(list.get(i - 1)) != null) {
+                    content = method.invoke(list.get(i - 1)).toString();
+                }
+                cell.setCellValue(content);
             }
 
         }
